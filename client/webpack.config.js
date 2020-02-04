@@ -22,8 +22,20 @@ module.exports = {
         }
       },
       {
+        test: /\.(ttf|eot|svg|gif|jpg|png|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              limit: 10000
+            }
+          }
+        ]
+      },
+      {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        include: /node_modules/,
+        loaders: ["style-loader", "css-loader"]
       }
     ]
   },
